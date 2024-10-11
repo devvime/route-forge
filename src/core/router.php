@@ -34,14 +34,9 @@ class Router
       if (preg_match("#^$pattern$#", $path, $matches)) {
         array_shift($matches);
 
-        $request = [];
-        if ($method === 'GET') {
-          $request = $_GET;
-        } elseif ($method === 'POST') {
-          $request = $_POST;
-        } elseif ($method === 'PUT' || $method === 'DELETE') {
-          parse_str(file_get_contents("php://input"), $request);
-        }
+        $request = new stdClass();
+        $request->params = $_GET;
+        parse_str(file_get_contents("php://input"), $request->body);
         
         call_user_func_array($callback, array_merge($matches, [$request]));
         return;
