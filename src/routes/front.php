@@ -1,5 +1,8 @@
 <?php
 
-$router->get('/', $test);
-$router->get('/test', $testing);
-$router->get('/test/:id', $testById);
+$router->get('/', function() {
+  echo json_encode([
+    'status' => 200,
+    'message' => 'Welcome to API!'
+  ]);
+});

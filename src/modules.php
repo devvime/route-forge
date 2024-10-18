@@ -1,3 +1,5 @@
 <?php
 
-require __DIR__ . '/functions/test.php';
+// import your modules
+
+require __DIR__ . '/functions/users.php';
