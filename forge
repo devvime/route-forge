@@ -1,0 +1,13 @@
+<?php
+
+$command = $argv;
+$port = 8080;
+
+switch ($command[1]) {
+    case 'server':
+        shell_exec("php -S localhost:" . $port);
+    break;
+    case 'test':
+        system("php tests/index.php");
+    break;
+}
