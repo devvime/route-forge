@@ -36,7 +36,7 @@ class Router
 
         $request = new stdClass();
         $request->params = $_GET;
-        parse_str(file_get_contents("php://input"), $request->body);
+        $request->body = json_decode(file_get_contents('php://input'));
         
         call_user_func_array($callback, array_merge($matches, [$request]));
         return;
